@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# Neostore - Sistema de Gestão de Fornecedores (React Puro)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sistema moderno de gestão de fornecedores desenvolvido com React puro e Vite.
 
-## Available Scripts
+## 🚀 Tecnologias
 
-In the project directory, you can run:
+- **React 19** - Biblioteca JavaScript para interfaces
+- **Vite 6** - Build tool e dev server ultra-rápido
+- **TypeScript 5.7** - Superset tipado do JavaScript
+- **Tailwind CSS 3.4** - Framework CSS utilitário
+- **Lucide React** - Biblioteca de ícones moderna
 
-### `npm start`
+## 📋 Pré-requisitos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js 18.0.0 ou superior
+- npm 8.0.0 ou superior
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Instalação
 
-### `npm test`
+1. **Clone o repositório:**
+\`\`\`bash
+git clone <repository-url>
+cd neostore-react-pure
+\`\`\`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Instale as dependências:**
+\`\`\`bash
+npm install
+\`\`\`
 
-### `npm run build`
+3. **Execute em desenvolvimento:**
+\`\`\`bash
+npm run dev
+\`\`\`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Acesse:** http://localhost:3000
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📦 Scripts Disponíveis
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `npm run dev` - Executa em modo desenvolvimento
+- `npm run build` - Gera build de produção
+- `npm run preview` - Preview do build de produção
+- `npm run lint` - Executa linting do código
+- `npm run type-check` - Verifica tipos TypeScript
 
-### `npm run eject`
+## 🏗️ Arquitetura
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+O projeto segue o padrão **Atomic Design**:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+\`\`\`
+src/
+├── components/
+│   ├── atoms/          # Componentes básicos
+│   ├── molecules/      # Combinações de atoms
+│   ├── organisms/      # Componentes complexos
+│   ├── templates/      # Layouts
+│   └── pages/          # Páginas completas
+├── services/           # Comunicação com API
+├── types/              # Definições TypeScript
+├── utils/              # Utilitários
+└── App.tsx             # Componente principal
+\`\`\`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🎯 Funcionalidades
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- ✅ CRUD completo de fornecedores
+- ✅ Validação de formulários com máscaras
+- ✅ Importação em lote via JSON
+- ✅ Interface totalmente responsiva
+- ✅ Paginação com navegação
+- ✅ Feedback visual com toasts
+- ✅ Estados de loading
+- ✅ Tratamento de erros
 
-## Learn More
+## 🔧 API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+O sistema consome a API REST em:
+`http://localhost:8080/neostore/api/v1/suppliers/`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📱 Responsividade
 
-### Code Splitting
+- **Mobile (< 1024px)**: Layout em cards otimizado
+- **Desktop (≥ 1024px)**: Tabela completa com todas as colunas
+- **Transições suaves** entre breakpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🚀 Deploy
 
-### Analyzing the Bundle Size
+Para fazer build de produção:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+\`\`\`bash
+npm run build
+npm run preview
+\`\`\`
 
-### Making a Progressive Web App
+Os arquivos serão gerados na pasta `dist/`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## ⚡ Performance
 
-### Advanced Configuration
+- **Bundle splitting** automático
+- **Tree shaking** para código não utilizado
+- **CSS purging** em produção
+- **Lazy loading** de componentes
+- **Otimização de imagens**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔧 Configuração
 
-### Deployment
+### Vite
+- Alias `@/` para `src/`
+- Hot Module Replacement (HMR)
+- Build otimizado com Rollup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Tailwind CSS
+- Configuração customizada
+- Plugins para formulários e tipografia
+- Sistema de cores consistente
 
-### `npm run build` fails to minify
+### TypeScript
+- Strict mode habilitado
+- Path mapping configurado
+- Verificação de tipos rigorosa
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
