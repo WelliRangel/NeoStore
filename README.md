@@ -56,8 +56,8 @@ A orquestração do ambiente de desenvolvimento e produção é feita através d
 
 . Clone este repositório:
    ```bash
-   git clone https://github.com/SeuUsuario/SeuRepositorio.git
-   cd SeuRepositorio
+   git clone https://github.com/WelliRangel/NeoStore.git
+   cd NeoStore
    ```
 
 . (Opcional) Configure variáveis de ambiente do backend e frontend conforme instruções nos READMEs de cada pasta, se necessário.
