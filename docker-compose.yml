@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16
+    container_name: neostore_db
+    environment:
+      POSTGRES_DB: neostore
+      POSTGRES_USER: neostore
+      POSTGRES_PASSWORD: neostore
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - neostore-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: neostore_backend
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: neostore
+      DB_USER: neostore
+      DB_PASSWORD: neostore
+      JAVA_OPTS: "-Djboss.bind.address=0.0.0.0"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - neostore-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: neostore_frontend
+    environment:
+      VITE_API_URL: http://localhost:8080/neostore/api/v1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - neostore-net
+
+volumes:
+  db_data:
+
+networks:
+  neostore-net:
+    driver: bridge
