@@ -1,5 +1,3 @@
-Claro! Segue seu README.md refatorado, mantendo a estrutura do seu modelo, corrigindo pequenos detalhes de Markdown, melhorando a clareza e aderindo ao padrão dos exemplos fornecidos:
-
 ---
 
 # Monorepo Fullstack — Jakarta EE & React 19  
