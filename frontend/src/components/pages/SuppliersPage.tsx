@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { Layout } from "@/components/templates/Layout"
 import { SupplierList } from "@/components/organisms/SupplierList"
 import { SupplierForm } from "@/components/organisms/SupplierForm"
@@ -38,24 +38,28 @@ export function SuppliersPage({
   const [showImport, setShowImport] = useState(false)
   const [editingSupplier, setEditingSupplier] = useState<Supplier | null>(null)
 
-  const handleEdit = (supplier: Supplier) => {
+  // Adicionar useCallback para handlers
+  const handleEdit = useCallback((supplier: Supplier) => {
     setEditingSupplier(supplier)
     setShowForm(true)
-  }
+  }, [])
 
-  const handleCloseForm = () => {
+  const handleCloseForm = useCallback(() => {
     setShowForm(false)
     setEditingSupplier(null)
-  }
+  }, [])
 
-  const handleSubmitForm = async (supplierData: Omit<Supplier, "id">) => {
-    if (editingSupplier) {
-      await onUpdateSupplier(editingSupplier.id, supplierData)
-    } else {
-      await onCreateSupplier(supplierData)
-    }
-    handleCloseForm()
-  }
+  const handleSubmitForm = useCallback(
+    async (supplierData: Omit<Supplier, "id">) => {
+      if (editingSupplier) {
+        await onUpdateSupplier(editingSupplier.id, supplierData)
+      } else {
+        await onCreateSupplier(supplierData)
+      }
+      handleCloseForm()
+    },
+    [editingSupplier, onUpdateSupplier, onCreateSupplier, handleCloseForm],
+  )
 
   return (
     <Layout>
@@ -63,14 +67,14 @@ export function SuppliersPage({
         {/* Header Section */}
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:justify-between sm:items-start">
           <div className="flex items-start gap-3">
-            <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl">
-              <Building2 className="w-6 h-6 text-blue-600" />
+            <div className="flex items-center justify-center w-12 h-12 bg-accent rounded-xl shadow-elegant">
+              <Building2 className="w-6 h-6 text-accent-foreground" />
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Fornecedores</h1>
-              <p className="text-gray-600 mt-1 text-sm sm:text-base">Gerencie os fornecedores da Neostore</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Fornecedores</h1>
+              <p className="text-muted-foreground mt-1 text-sm sm:text-base">Gerencie os fornecedores da Neostore</p>
               {total > 0 && (
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   {total} fornecedor{total !== 1 ? "es" : ""} cadastrado{total !== 1 ? "s" : ""}
                 </p>
               )}

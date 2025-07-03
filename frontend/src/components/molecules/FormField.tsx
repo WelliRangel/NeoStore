@@ -4,7 +4,7 @@ import { AlertCircle } from "lucide-react"
 interface FormFieldProps {
   label: string
   children: ReactNode
-  error?: string
+  error?: string | undefined
   required?: boolean
   hint?: string
 }

@@ -1,7 +1,7 @@
 "use client"
 
-import type React from "react"
-import { useState } from "react"
+import type { ChangeEvent } from "react"
+import { useState, useCallback } from "react"
 import { Modal } from "@/components/molecules/Modal"
 import { Button } from "@/components/atoms/Button"
 import { Card } from "@/components/atoms/Card"
@@ -18,7 +18,7 @@ export function ImportModal({ onImport, onClose }: ImportModalProps) {
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<ImportResponse | null>(null)
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0]
     if (selectedFile && selectedFile.type === "application/json") {
       setFile(selectedFile)
@@ -26,9 +26,9 @@ export function ImportModal({ onImport, onClose }: ImportModalProps) {
     } else {
       alert("Por favor, selecione um arquivo JSON válido.")
     }
-  }
+  }, [])
 
-  const handleImport = async () => {
+  const handleImport = useCallback(async () => {
     if (!file) return
 
     setLoading(true)
@@ -40,7 +40,7 @@ export function ImportModal({ onImport, onClose }: ImportModalProps) {
     } finally {
       setLoading(false)
     }
-  }
+  }, [file, onImport])
 
   const handleClose = () => {
     setFile(null)

@@ -1,10 +1,51 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "skipLibCheck": true,
+    // Target and Module for Node.js environment
+    "target": "ES2022",
+    "lib": ["ES2023"],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+
+    // Bundler mode
+    "resolveJsonModule": true,
+    "allowArbitraryExtensions": false,
+    "isolatedModules": true,
+    "noEmit": true,
+
+    // Type Checking (Strict but focused on build tools)
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": false,
+    "noImplicitReturns": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": false,
+
+    // Language and Environment
+    "useDefineForClassFields": true,
+    "experimentalDecorators": false,
+    "emitDecoratorMetadata": false,
+
+    // Compiler Diagnostics
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+
+    // Projects
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo-node",
+
+    // Output Formatting
+    "removeComments": false
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "vitest.config.ts", "tailwind.config.js", "postcss.config.js", "*.config.*", "*.d.ts"],
+  "exclude": ["src/**/*", "node_modules", "dist"]
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import { memo } from "react"
 import type { Supplier } from "@/types/supplier"
 import { Card } from "@/components/atoms/Card"
 import { Button } from "@/components/atoms/Button"
@@ -18,7 +19,8 @@ interface SupplierListProps {
   onDelete: (id: number) => void
 }
 
-export function SupplierList({
+// Memoizar componente para evitar re-renders desnecessários
+export const SupplierList = memo<SupplierListProps>(function SupplierList({
   suppliers,
   total,
   currentPage,
@@ -211,4 +213,4 @@ export function SupplierList({
       </div>
     </div>
   )
-}
+})

@@ -4,48 +4,82 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    /* High-Impact Monochromatic Palette */
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 0 0% 4%; /* Near Black */
+    --card: 0 0% 99%; /* Off White */
+    --card-foreground: 0 0% 8%; /* Dark Gray */
+    --popover: 0 0% 100%; /* Pure White */
+    --popover-foreground: 0 0% 4%; /* Near Black */
+
+    /* Primary - High Contrast Black */
+    --primary: 0 0% 9%; /* Charcoal Black */
+    --primary-foreground: 0 0% 98%; /* Off White */
+
+    /* Secondary - Light Gray */
+    --secondary: 0 0% 96%; /* Light Gray */
+    --secondary-foreground: 0 0% 9%; /* Charcoal Black */
+
+    /* Muted - Medium Gray */
+    --muted: 0 0% 94%; /* Soft Gray */
+    --muted-foreground: 0 0% 45%; /* Medium Gray */
+
+    /* Accent - Dark Gray */
+    --accent: 0 0% 92%; /* Light Accent */
+    --accent-foreground: 0 0% 9%; /* Dark Accent */
+
+    /* Destructive - High Contrast */
+    --destructive: 0 0% 15%; /* Dark for Destructive */
+    --destructive-foreground: 0 0% 98%; /* Light Text */
+
+    /* Border & Input - Subtle Gray */
+    --border: 0 0% 89%; /* Border Gray */
+    --input: 0 0% 89%; /* Input Border */
+    --ring: 0 0% 20%; /* Focus Ring */
     --radius: 0.5rem;
+
+    /* Success - Dark Gray Variant */
+    --success: 0 0% 25%; /* Success Dark */
+    --success-foreground: 0 0% 98%; /* Success Light */
+
+    /* Warning - Medium Gray */
+    --warning: 0 0% 35%; /* Warning Gray */
+    --warning-foreground: 0 0% 98%; /* Warning Light */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
+    /* Dark Mode - Inverted High-Impact Palette */
+    --background: 0 0% 4%; /* Near Black */
+    --foreground: 0 0% 98%; /* Off White */
+    --card: 0 0% 6%; /* Dark Card */
+    --card-foreground: 0 0% 95%; /* Light Text */
+    --popover: 0 0% 4%; /* Dark Popover */
+    --popover-foreground: 0 0% 98%; /* Light Text */
+
+    --primary: 0 0% 98%; /* Light Primary */
+    --primary-foreground: 0 0% 9%; /* Dark Text */
+
+    --secondary: 0 0% 10%; /* Dark Secondary */
+    --secondary-foreground: 0 0% 98%; /* Light Text */
+
+    --muted: 0 0% 12%; /* Dark Muted */
+    --muted-foreground: 0 0% 65%; /* Medium Light */
+
+    --accent: 0 0% 14%; /* Dark Accent */
+    --accent-foreground: 0 0% 98%; /* Light Text */
+
+    --destructive: 0 0% 85%; /* Light Destructive */
+    --destructive-foreground: 0 0% 9%; /* Dark Text */
+
+    --border: 0 0% 15%; /* Dark Border */
+    --input: 0 0% 15%; /* Dark Input */
+    --ring: 0 0% 80%; /* Light Ring */
+
+    --success: 0 0% 75%; /* Light Success */
+    --success-foreground: 0 0% 9%; /* Dark Text */
+
+    --warning: 0 0% 65%; /* Light Warning */
+    --warning-foreground: 0 0% 9%; /* Dark Text */
   }
 }
 
@@ -53,49 +87,114 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* High-Impact Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-foreground font-semibold;
+  }
+
+  /* Enhanced Focus States */
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply ring-2 ring-ring ring-offset-2 ring-offset-background outline-none;
   }
 }
 
 @layer utilities {
+  /* Line Clamping */
   .line-clamp-2 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
+
+  /* High-Impact Shadows */
+  .shadow-elegant {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .shadow-elegant-lg {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  /* Smooth Transitions */
+  .transition-elegant {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Glass Effect */
+  .glass-effect {
+    backdrop-filter: blur(8px);
+    background-color: rgb(255 255 255 / 0.8);
+  }
+
+  .glass-effect-dark {
+    backdrop-filter: blur(8px);
+    background-color: rgb(0 0 0 / 0.8);
+  }
 }
 
-/* Garantir que todos os elementos tenham dimensões adequadas */
+/* Garantir dimensões adequadas */
 * {
   box-sizing: border-box;
 }
 
-/* Prevenir colapso de altura em containers flex */
+/* Prevenir colapso de altura */
 .min-h-0 {
   min-height: 0;
 }
 
-/* Garantir que inputs tenham altura mínima adequada */
+/* Inputs com altura mínima */
 input,
 textarea,
 select {
   min-height: 44px;
 }
 
-/* Melhorar responsividade de tabelas */
+/* Responsividade de tabelas */
 @media (max-width: 1024px) {
   table {
     font-size: 14px;
   }
 }
 
-/* Garantir que modals sejam responsivos */
+/* Modais responsivos */
 @media (max-width: 640px) {
   .modal-content {
     margin: 1rem;
     max-height: calc(100vh - 2rem);
   }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
 }

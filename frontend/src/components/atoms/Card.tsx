@@ -9,10 +9,9 @@ export function Card({ children, className = "" }: CardProps) {
   return (
     <div
       className={`
-        bg-white rounded-lg shadow-sm border border-gray-200
-        w-full h-auto
-        min-h-fit
-        flex flex-col
+        bg-card text-card-foreground rounded-lg border border-border
+        shadow-elegant hover:shadow-elegant-md transition-elegant
+        w-full h-auto min-h-fit flex flex-col
         ${className}
       `}
     >

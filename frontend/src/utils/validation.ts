@@ -49,26 +49,32 @@ function isValidCNPJ(cnpj: string): boolean {
 
   // Primeiro dígito verificador
   for (let i = 0; i < 12; i++) {
-    sum += Number.parseInt(cleanCNPJ[i]) * weight
+    const digit = cleanCNPJ.charAt(i)
+    if (!digit) return false // Type guard
+    sum += Number.parseInt(digit, 10) * weight
     weight = weight === 2 ? 9 : weight - 1
   }
 
   let remainder = sum % 11
   const firstDigit = remainder < 2 ? 0 : 11 - remainder
 
-  if (Number.parseInt(cleanCNPJ[12]) !== firstDigit) return false
+  const digit12 = cleanCNPJ.charAt(12)
+  if (!digit12 || Number.parseInt(digit12, 10) !== firstDigit) return false
 
   // Segundo dígito verificador
   sum = 0
   weight = 6
 
   for (let i = 0; i < 13; i++) {
-    sum += Number.parseInt(cleanCNPJ[i]) * weight
+    const digit = cleanCNPJ.charAt(i)
+    if (!digit) return false // Type guard
+    sum += Number.parseInt(digit, 10) * weight
     weight = weight === 2 ? 9 : weight - 1
   }
 
   remainder = sum % 11
   const secondDigit = remainder < 2 ? 0 : 11 - remainder
 
-  return Number.parseInt(cleanCNPJ[13]) === secondDigit
+  const digit13 = cleanCNPJ.charAt(13)
+  return digit13 ? Number.parseInt(digit13, 10) === secondDigit : false
 }

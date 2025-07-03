@@ -18,14 +18,15 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    "inline-flex items-center justify-center font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 disabled:cursor-not-allowed"
+    "inline-flex items-center justify-center font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition-elegant disabled:cursor-not-allowed"
 
   const variantClasses = {
     primary:
-      "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 disabled:bg-blue-300 shadow-sm hover:shadow-md",
+      "bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-primary/20 disabled:bg-primary/50 shadow-elegant hover:shadow-elegant-md",
     outline:
-      "border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500 disabled:bg-gray-50 disabled:text-gray-400 shadow-sm hover:shadow-md hover:border-gray-400",
-    ghost: "text-gray-700 hover:bg-gray-100 focus:ring-blue-500 disabled:text-gray-400",
+      "border border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground focus:ring-primary/20 disabled:bg-muted disabled:text-muted-foreground shadow-elegant hover:shadow-elegant-md hover:border-primary/20",
+    ghost:
+      "text-foreground hover:bg-accent hover:text-accent-foreground focus:ring-primary/20 disabled:text-muted-foreground",
   }
 
   const sizeClasses = {

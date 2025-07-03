@@ -8,18 +8,14 @@ import java.io.IOException;
 
 @Provider
 public class CorsFilter implements ContainerResponseFilter {
+
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
             throws IOException {
-        String origin = requestContext.getHeaderString("Origin");
-        // Permite qualquer origem em desenvolvimento, mas restringe em produção!
-        if (origin != null && !origin.isEmpty()) {
-            responseContext.getHeaders().putSingle("Access-Control-Allow-Origin", origin);
-        } else {
-            responseContext.getHeaders().putSingle("Access-Control-Allow-Origin", "*");
-        }
-        responseContext.getHeaders().putSingle("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
-        responseContext.getHeaders().putSingle("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
-        responseContext.getHeaders().putSingle("Access-Control-Allow-Credentials", "true");
+
+        responseContext.getHeaders().putSingle("Access-Control-Allow-Origin", "*");
+        responseContext.getHeaders().putSingle("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD, PATCH");
+        responseContext.getHeaders().putSingle("Access-Control-Allow-Headers", "*");
+        responseContext.getHeaders().putSingle("Access-Control-Max-Age", "3600");
     }
 }

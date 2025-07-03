@@ -1,26 +1,76 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    // Target and Module
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+
+    // Bundler mode
     "resolveJsonModule": true,
+    "allowArbitraryExtensions": false,
     "isolatedModules": true,
     "noEmit": true,
+
+    // JSX
     "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
+    // Type Checking
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": false,
+
+    // Language and Environment
+    "useDefineForClassFields": true,
+    "experimentalDecorators": false,
+    "emitDecoratorMetadata": false,
+
+    // Compiler Diagnostics
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+
+    // Projects
+    "composite": false,
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+
+    // Output Formatting
+    "removeComments": false,
+
+    // Path Mapping
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    },
-    "forceConsistentCasingInFileNames": true
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/utils/*": ["./src/utils/*"]
+    }
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src/**/*", "src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx", "vite-env.d.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
+  ]
 }
