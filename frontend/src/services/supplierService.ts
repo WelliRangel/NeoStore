@@ -8,7 +8,7 @@ class SupplierService {
 
       try {
         const errorData = await response.json()
-        errorMessage = errorData.message || errorMessage
+        errorMessage = errorData.error || errorData.message || errorMessage
       } catch {
         // If JSON parsing fails, use the default error message
       }
@@ -44,7 +44,7 @@ class SupplierService {
   }
 
   async getSuppliers(page = 1, pageSize = 5): Promise<ApiResponse<Supplier[]>> {
-    const url = new URL(`${API_CONFIG.BASE_URL}/suppliers/`)
+    const url = new URL(`${API_CONFIG.BASE_URL}/suppliers`)
     url.searchParams.set("page", page.toString())
     url.searchParams.set("pageSize", pageSize.toString())
 
@@ -53,7 +53,7 @@ class SupplierService {
   }
 
   async createSupplier(supplier: Omit<Supplier, "id">): Promise<Supplier> {
-    const response = await this.fetchWithTimeout(`${API_CONFIG.BASE_URL}/suppliers/`, {
+    const response = await this.fetchWithTimeout(`${API_CONFIG.BASE_URL}/suppliers`, {
       method: "POST",
       body: JSON.stringify(supplier),
     })
@@ -77,7 +77,7 @@ class SupplierService {
       let errorMessage = `HTTP error! status: ${response.status}`
       try {
         const errorData = await response.json()
-        errorMessage = errorData.message || errorMessage
+        errorMessage = errorData.error || errorData.message || errorMessage
       } catch {
         // If JSON parsing fails, use the default error message
       }
@@ -85,6 +85,7 @@ class SupplierService {
     }
   }
 
+  // Certifique-se de que esse endpoint existe no backend!
   async importSuppliers(suppliers: Omit<Supplier, "id">[]): Promise<ImportResponse> {
     const response = await this.fetchWithTimeout(`${API_CONFIG.BASE_URL}/suppliers/import`, {
       method: "POST",

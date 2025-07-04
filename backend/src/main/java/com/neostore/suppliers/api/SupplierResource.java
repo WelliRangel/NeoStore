@@ -31,7 +31,7 @@ public class SupplierResource {
     public Response getById(@PathParam("id") Long id) {
         if (id == null) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(new ErrorMessage("Invalid ID")).build();
+                .entity(new ErrorMessage("Invalid ID")).build();
         }
         return Response.ok(service.findById(id)).build();
     }
@@ -41,7 +41,7 @@ public class SupplierResource {
     public Response update(@PathParam("id") Long id, @Valid SupplierDTO dto) {
         if (id == null) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(new ErrorMessage("Invalid ID")).build();
+                .entity(new ErrorMessage("Invalid ID")).build();
         }
         return Response.ok(service.update(id, dto)).build();
     }
@@ -51,7 +51,7 @@ public class SupplierResource {
     public Response delete(@PathParam("id") Long id) {
         if (id == null) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(new ErrorMessage("Invalid ID")).build();
+                .entity(new ErrorMessage("Invalid ID")).build();
         }
         service.delete(id);
         return Response.noContent().build();
@@ -59,16 +59,25 @@ public class SupplierResource {
 
     @GET
     public Response list(
-            @QueryParam("page") @DefaultValue("1") int page,
-            @QueryParam("pageSize") @DefaultValue("5") int pageSize
+        @QueryParam("page") @DefaultValue("1") int page,
+        @QueryParam("pageSize") @DefaultValue("5") int pageSize
     ) {
         List<SupplierDTO> suppliers = service.findAll(page, pageSize);
         long total = service.count();
         return Response.ok(new PagedResponse<>(suppliers, total)).build();
     }
 
+    // Permite requisições OPTIONS para todos os endpoints deste resource
+    @OPTIONS
+    @Path("{path:.*}")
+    public Response options() {
+        return Response.ok().build();
+    }
+
     public static class ErrorMessage {
         public String error;
-        public ErrorMessage(String error) { this.error = error; }
+        public ErrorMessage(String error) {
+            this.error = error;
+        }
     }
 }

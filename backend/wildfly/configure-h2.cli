@@ -1,0 +1,16 @@
+# Adiciona o driver H2
+/subsystem=datasources/jdbc-driver=h2:add(driver-name=h2,driver-module-name=deployment.h2-2.2.224.jar,driver-class-name=org.h2.Driver)
+
+# Adiciona o datasource H2 (modo arquivo, persistente)
+data-source add \
+  --name=H2DS \
+  --jndi-name=java:/jdbc/H2DS \
+  --driver-name=h2 \
+  --connection-url=jdbc:h2:/opt/jboss/wildfly/standalone/data/neostore;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE \
+  --user-name=sa \
+  --password=sa \
+  --use-ccm=false \
+  --max-pool-size=20 \
+  --blocking-timeout-wait-millis=5000
+
+:reload

@@ -1,6 +1,6 @@
 export const API_CONFIG = {
   // Use direct API URL since backend now has CORS configured
-  BASE_URL: import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8080/neostore/api/v1",
+  BASE_URL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/neostore/api/v1",
   TIMEOUT: 10000,
   RETRY_ATTEMPTS: 3,
 } as const
