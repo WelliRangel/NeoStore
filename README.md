@@ -65,6 +65,10 @@ A orquestração do ambiente de desenvolvimento e produção é feita através d
 
 ## Configuração de Ambiente
 
+Atenção!!!
+O dockerfile do backend está sendo ajustado para que faça o multi stage build corretamente.
+O backend e o frontend devem ser executados de maneira local.
+
 O arquivo `docker-compose.yml` está localizado na raiz e define os seguintes serviços:
 
 - **backend**: Container Jakarta EE (WildFly)
