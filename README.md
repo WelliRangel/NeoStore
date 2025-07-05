@@ -116,7 +116,7 @@ Após clonar o repositório e garantir que as variáveis de ambiente estão corr
 docker compose up -d --build
 ```
 
-- O **backend** ficará disponível em: [http://localhost:8080/neostore](http://localhost:8080/neostore)
+- O **backend** ficará disponível em: [http://localhost:8080/neostore](http://localhost:8080/neostore/api/v1/suppliers)
 - O **frontend** ficará disponível em: [http://localhost:3000](http://localhost:3000)
 
 > **Obs:** O Docker Compose irá construir e subir todos os serviços automaticamente. Não é necessário rodar comandos individuais em cada pasta.
