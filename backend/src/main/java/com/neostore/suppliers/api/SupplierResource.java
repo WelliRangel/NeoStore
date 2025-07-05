@@ -67,7 +67,6 @@ public class SupplierResource {
         return Response.ok(new PagedResponse<>(suppliers, total)).build();
     }
 
-    // Permite requisições OPTIONS para todos os endpoints deste resource
     @OPTIONS
     @Path("{path:.*}")
     public Response options() {

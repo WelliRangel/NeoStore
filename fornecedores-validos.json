@@ -1,0 +1,302 @@
+[
+  {
+    "name": "Fornecedor S.A. Igor",
+    "email": "isismoraes@ferreira.br",
+    "description": "Móveis para escritório",
+    "cnpj": "47.210.745/0001-49"
+  },
+  {
+    "name": "Fornecedor e Filhos João Pedro",
+    "email": "alana17@barbosa.net",
+    "description": "Móveis para escritório",
+    "cnpj": "53.776.139/0001-98"
+  },
+  {
+    "name": "Fornecedor - EI Ana Luiza",
+    "email": "diegofogaca@lopes.com",
+    "description": "Brindes corporativos",
+    "cnpj": "76.174.977/0001-97"
+  },
+  {
+    "name": "Fornecedor - ME Alexandre",
+    "email": "freitasdaniela@ribeiro.com",
+    "description": "Móveis para escritório",
+    "cnpj": "86.941.894/0001-30"
+  },
+  {
+    "name": "Fornecedor e Filhos João Guilherme",
+    "email": "caueda-rocha@moraes.net",
+    "description": "Serviços de transporte",
+    "cnpj": "78.489.110/0001-56"
+  },
+  {
+    "name": "Fornecedor - EI Cauã",
+    "email": "emilly34@lima.br",
+    "description": "Material de construção",
+    "cnpj": "43.298.632/0001-96"
+  },
+  {
+    "name": "Fornecedor S/A Olivia",
+    "email": "cbarros@cardoso.net",
+    "description": "Brindes corporativos",
+    "cnpj": "20.331.888/0001-52"
+  },
+  {
+    "name": "Fornecedor e Filhos Luna",
+    "email": "marcela97@lopes.net",
+    "description": "Brindes corporativos",
+    "cnpj": "77.953.625/0001-00"
+  },
+  {
+    "name": "Fornecedor Ltda. Breno",
+    "email": "luiz-feliperodrigues@barbosa.com",
+    "description": "Materiais escolares",
+    "cnpj": "13.720.712/0001-27"
+  },
+  {
+    "name": "Fornecedor - ME Pedro Henrique",
+    "email": "enricocardoso@ramos.br",
+    "description": "Brindes corporativos",
+    "cnpj": "97.802.813/0001-37"
+  },
+  {
+    "name": "Fornecedor S.A. Maria Luiza",
+    "email": "marcelonunes@da.com",
+    "description": "Serviços de manutenção",
+    "cnpj": "04.984.707/0001-30"
+  },
+  {
+    "name": "Fornecedor S.A. João Gabriel",
+    "email": "barbara57@porto.br",
+    "description": "Móveis para escritório",
+    "cnpj": "34.865.401/0001-26"
+  },
+  {
+    "name": "Fornecedor S.A. Sarah",
+    "email": "qdas-neves@correia.com",
+    "description": "Materiais escolares",
+    "cnpj": "97.929.773/0001-99"
+  },
+  {
+    "name": "Fornecedor - EI Eduardo",
+    "email": "catarina22@cardoso.org",
+    "description": "Equipamentos de TI",
+    "cnpj": "27.904.953/0001-30"
+  },
+  {
+    "name": "Fornecedor S.A. Ana Beatriz",
+    "email": "brunocarvalho@moura.org",
+    "description": "Material de construção",
+    "cnpj": "41.613.239/0001-14"
+  },
+  {
+    "name": "Fornecedor - EI Luiz Gustavo",
+    "email": "da-conceicaoisabel@rodrigues.com",
+    "description": "Serviços de segurança",
+    "cnpj": "13.787.803/0001-80"
+  },
+  {
+    "name": "Fornecedor - ME Enrico",
+    "email": "gustavo-henriqueporto@goncalves.br",
+    "description": "Brindes corporativos",
+    "cnpj": "39.872.825/0001-31"
+  },
+  {
+    "name": "Fornecedor e Filhos Helena",
+    "email": "duartepedro@monteiro.net",
+    "description": "Equipamentos de TI",
+    "cnpj": "17.420.140/0001-11"
+  },
+  {
+    "name": "Fornecedor - ME Alícia",
+    "email": "gomescecilia@cavalcanti.org",
+    "description": "Produtos de limpeza",
+    "cnpj": "64.683.072/0001-63"
+  },
+  {
+    "name": "Fornecedor S/A Danilo",
+    "email": "bernardocastro@vieira.org",
+    "description": "Produtos alimentícios",
+    "cnpj": "13.849.617/0001-28"
+  },
+  {
+    "name": "Fornecedor S.A. Emilly",
+    "email": "stella19@da.br",
+    "description": "Serviços de transporte",
+    "cnpj": "66.738.955/0001-59"
+  },
+  {
+    "name": "Fornecedor - ME Francisco",
+    "email": "da-pazmurilo@nogueira.br",
+    "description": "Móveis para escritório",
+    "cnpj": "57.456.837/0001-67"
+  },
+  {
+    "name": "Fornecedor Ltda. Yago",
+    "email": "heitorpinto@fernandes.com",
+    "description": "Brindes corporativos",
+    "cnpj": "21.206.278/0001-90"
+  },
+  {
+    "name": "Fornecedor e Filhos Laura",
+    "email": "qda-cruz@carvalho.com",
+    "description": "Equipamentos de TI",
+    "cnpj": "42.957.548/0001-74"
+  },
+  {
+    "name": "Fornecedor e Filhos Rebeca",
+    "email": "carvalhopaulo@nascimento.com",
+    "description": "Materiais escolares",
+    "cnpj": "90.029.450/0001-08"
+  },
+  {
+    "name": "Fornecedor e Filhos Benjamin",
+    "email": "portosophie@jesus.br",
+    "description": "Material de construção",
+    "cnpj": "71.502.325/0001-10"
+  },
+  {
+    "name": "Fornecedor S.A. Marcela",
+    "email": "laviniada-paz@novaes.com",
+    "description": "Materiais escolares",
+    "cnpj": "72.177.818/0001-95"
+  },
+  {
+    "name": "Fornecedor e Filhos Erick",
+    "email": "cjesus@almeida.br",
+    "description": "Serviços de segurança",
+    "cnpj": "50.906.925/0001-74"
+  },
+  {
+    "name": "Fornecedor Ltda. Nathan",
+    "email": "joao-guilhermecavalcanti@da.net",
+    "description": "Materiais escolares",
+    "cnpj": "78.251.472/0001-04"
+  },
+  {
+    "name": "Fornecedor S.A. Lorena",
+    "email": "kevin02@da.com",
+    "description": "Serviços de transporte",
+    "cnpj": "18.381.895/0001-17"
+  },
+  {
+    "name": "Fornecedor Ltda. João",
+    "email": "opires@melo.com",
+    "description": "Serviços de segurança",
+    "cnpj": "03.489.637/0001-81"
+  },
+  {
+    "name": "Fornecedor e Filhos Ana Vitória",
+    "email": "fernandamendes@barbosa.com",
+    "description": "Brindes corporativos",
+    "cnpj": "21.744.266/0001-19"
+  },
+  {
+    "name": "Fornecedor Ltda. Carlos Eduardo",
+    "email": "jpires@da.org",
+    "description": "Material de construção",
+    "cnpj": "62.465.995/0001-13"
+  },
+  {
+    "name": "Fornecedor S/A Anthony",
+    "email": "vinicius08@goncalves.com",
+    "description": "Serviços de segurança",
+    "cnpj": "60.798.335/0001-29"
+  },
+  {
+    "name": "Fornecedor Ltda. Maria Vitória",
+    "email": "camila64@mendes.com",
+    "description": "Serviços de segurança",
+    "cnpj": "15.953.567/0001-50"
+  },
+  {
+    "name": "Fornecedor - EI Lívia",
+    "email": "nascimentoluiz-felipe@da.br",
+    "description": "Produtos de limpeza",
+    "cnpj": "19.051.825/0001-63"
+  },
+  {
+    "name": "Fornecedor - ME Enzo Gabriel",
+    "email": "carvalhoana-carolina@da.com",
+    "description": "Serviços de segurança",
+    "cnpj": "05.101.835/0001-51"
+  },
+  {
+    "name": "Fornecedor e Filhos Luiz Felipe",
+    "email": "breno35@fernandes.org",
+    "description": "Materiais escolares",
+    "cnpj": "55.791.236/0001-85"
+  },
+  {
+    "name": "Fornecedor S/A Joaquim",
+    "email": "caiovieira@goncalves.br",
+    "description": "Material de construção",
+    "cnpj": "60.155.064/0001-93"
+  },
+  {
+    "name": "Fornecedor e Filhos Maria Sophia",
+    "email": "svieira@da.br",
+    "description": "Brindes corporativos",
+    "cnpj": "18.589.725/0001-22"
+  },
+  {
+    "name": "Fornecedor Ltda. Camila",
+    "email": "hjesus@pinto.com",
+    "description": "Equipamentos de TI",
+    "cnpj": "06.826.163/0001-04"
+  },
+  {
+    "name": "Fornecedor S/A Davi Lucas",
+    "email": "fmartins@da.com",
+    "description": "Serviços de segurança",
+    "cnpj": "29.353.487/0001-78"
+  },
+  {
+    "name": "Fornecedor S.A. Davi",
+    "email": "rjesus@da.org",
+    "description": "Material de construção",
+    "cnpj": "95.630.889/0001-05"
+  },
+  {
+    "name": "Fornecedor - ME Ana Clara",
+    "email": "fsantos@azevedo.com",
+    "description": "Serviços de segurança",
+    "cnpj": "99.019.941/0001-34"
+  },
+  {
+    "name": "Fornecedor - EI Lavínia",
+    "email": "palmeida@gomes.com",
+    "description": "Brindes corporativos",
+    "cnpj": "71.395.252/0001-05"
+  },
+  {
+    "name": "Fornecedor - ME Leonardo",
+    "email": "monteirocaue@duarte.br",
+    "description": "Serviços de transporte",
+    "cnpj": "74.721.615/0001-43"
+  },
+  {
+    "name": "Fornecedor S.A. Ana Carolina",
+    "email": "ana-vitoria70@cunha.net",
+    "description": "Material de construção",
+    "cnpj": "74.557.098/0001-19"
+  },
+  {
+    "name": "Fornecedor - EI Thiago",
+    "email": "limayuri@da.com",
+    "description": "Materiais escolares",
+    "cnpj": "16.970.443/0001-45"
+  },
+  {
+    "name": "Fornecedor e Filhos Marcos Vinicius",
+    "email": "pteixeira@almeida.com",
+    "description": "Produtos de limpeza",
+    "cnpj": "48.511.577/0001-94"
+  },
+  {
+    "name": "Fornecedor S/A Larissa",
+    "email": "luiz-henrique00@ribeiro.net",
+    "description": "Produtos alimentícios",
+    "cnpj": "85.675.763/0001-95"
+  }
+]
