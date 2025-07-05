@@ -5,7 +5,7 @@
 
 ## Visão Geral
 
-API RESTful desecd..nvolvida com Jakarta EE 10, JPA (Hibernate) e CDI, seguindo princípios de:
+API RESTful desenvolvida com Jakarta EE 10, JPA (Hibernate) e CDI, seguindo princípios de:
 - **Separação de Camadas**: Resources (Controllers), Services, Repositories e Entities.
 - **Injeção de Dependência**: CDI para abstração e desacoplamento.
 - **Padrões de Projeto**: Repository Pattern, Service Layer, Dependency Injection, DTOs e Validação Bean Validation.

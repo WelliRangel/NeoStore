@@ -65,9 +65,6 @@ A orquestração do ambiente de desenvolvimento e produção é feita através d
 
 ## Configuração de Ambiente
 
-Atenção!!!
-O dockerfile do backend está sendo ajustado para que faça o multi stage build corretamente.
-O backend e o frontend devem ser executados de maneira local.
 
 O arquivo `docker-compose.yml` está localizado na raiz e define os seguintes serviços:
 
@@ -116,7 +113,7 @@ Após clonar o repositório e garantir que as variáveis de ambiente estão corr
 docker compose up -d --build
 ```
 
-- O **backend** ficará disponível em: [http://localhost:8080/neostore](http://localhost:8080/neostore/api/v1/suppliers)
+- O **backend** ficará disponível em: [http://localhost:8080/neostore/api/v1/suppliers](http://localhost:8080/neostore/api/v1/suppliers)
 - O **frontend** ficará disponível em: [http://localhost:3000](http://localhost:3000)
 
 > **Obs:** O Docker Compose irá construir e subir todos os serviços automaticamente. Não é necessário rodar comandos individuais em cada pasta.

@@ -4,7 +4,7 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
     <persistence-unit name="neostorePU" transaction-type="JTA">
-        <jta-data-source>java:/jdbc/neostore</jta-data-source>
+        <jta-data-source>java:/jdbc/neostoreDS</jta-data-source>
         <class>com.neostore.suppliers.model.Supplier</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
