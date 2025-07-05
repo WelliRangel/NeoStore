@@ -170,7 +170,7 @@ export function SupplierForm({ supplier, onSubmit, onClose }: SupplierFormProps)
                 transition-colors resize-none text-base
                 ${errors.description ? "border-destructive bg-destructive/5" : "border-border hover:border-border/80"}
               `}
-              placeholder="Descrição do fornecedor (opcional)"
+              placeholder="Descrição do fornecedor (obrigatório)"
               rows={4}
               aria-describedby={errors.description ? "description-error" : undefined}
               maxLength={500}

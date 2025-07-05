@@ -85,7 +85,6 @@ class SupplierService {
     }
   }
 
-  // Certifique-se de que esse endpoint existe no backend!
   async importSuppliers(suppliers: Omit<Supplier, "id">[]): Promise<ImportResponse> {
     const response = await this.fetchWithTimeout(`${API_CONFIG.BASE_URL}/suppliers/import`, {
       method: "POST",
