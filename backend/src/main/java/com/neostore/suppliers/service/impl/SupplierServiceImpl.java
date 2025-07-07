@@ -1,7 +1,9 @@
 package com.neostore.suppliers.service.impl;
 
+import com.neostore.suppliers.api.payload.FieldError;
 import com.neostore.suppliers.dto.SupplierDTO;
-import com.neostore.suppliers.exception.ApiException;
+import com.neostore.suppliers.exception.BusinessRuleException;
+import com.neostore.suppliers.exception.ResourceNotFoundException;
 import com.neostore.suppliers.mapper.SupplierMapper;
 import com.neostore.suppliers.model.Supplier;
 import com.neostore.suppliers.repository.SupplierRepository;
@@ -10,6 +12,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,22 +20,22 @@ import java.util.stream.Collectors;
 public class SupplierServiceImpl implements SupplierService {
 
     @Inject
-    SupplierRepository repository;
+    private SupplierRepository repository;
 
     @Transactional
     @Override
     public SupplierDTO create(@Valid SupplierDTO dto) {
         checkCnpjUnique(dto.cnpj(), null);
         checkEmailUnique(dto.email(), null);
-        Supplier supplier = SupplierMapper.toEntity(dto);
-        Supplier saved = repository.save(supplier);
+        Supplier entity = SupplierMapper.toEntity(dto);
+        Supplier saved = repository.save(entity);
         return SupplierMapper.toDTO(saved);
     }
 
     @Transactional
     @Override
     public SupplierDTO update(Long id, @Valid SupplierDTO dto) {
-        Supplier existing = getSupplierOrThrow(id);
+        Supplier existing = findEntityOrThrow(id);
         checkCnpjUnique(dto.cnpj(), id);
         checkEmailUnique(dto.email(), id);
         existing.setName(dto.name());
@@ -46,7 +49,7 @@ public class SupplierServiceImpl implements SupplierService {
     @Transactional
     @Override
     public void delete(Long id) {
-        getSupplierOrThrow(id);
+        findEntityOrThrow(id);
         repository.delete(id);
     }
 
@@ -54,13 +57,12 @@ public class SupplierServiceImpl implements SupplierService {
     public SupplierDTO findById(Long id) {
         return repository.findById(id)
                 .map(SupplierMapper::toDTO)
-                .orElseThrow(() -> new ApiException("Supplier not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Supplier", id));
     }
 
     @Override
     public List<SupplierDTO> findAll(int page, int pageSize) {
-        return repository.findAll(page, pageSize)
-                .stream()
+        return repository.findAll(page, pageSize).stream()
                 .map(SupplierMapper::toDTO)
                 .collect(Collectors.toList());
     }
@@ -70,16 +72,19 @@ public class SupplierServiceImpl implements SupplierService {
         return repository.count();
     }
 
-    private Supplier getSupplierOrThrow(Long id) {
+    private Supplier findEntityOrThrow(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new ApiException("Supplier not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Supplier", id));
     }
 
     private void checkCnpjUnique(String cnpj, Long ignoreId) {
         repository.findByCnpj(cnpj)
                 .filter(s -> ignoreId == null || !s.getId().equals(ignoreId))
                 .ifPresent(s -> {
-                    throw new ApiException("CNPJ already registered.");
+                    throw new BusinessRuleException(
+                            "CNPJ já cadastrado",
+                            List.of(new FieldError("cnpj", "CNPJ já cadastrado: " + cnpj))
+                    );
                 });
     }
 
@@ -87,7 +92,10 @@ public class SupplierServiceImpl implements SupplierService {
         repository.findByEmail(email)
                 .filter(s -> ignoreId == null || !s.getId().equals(ignoreId))
                 .ifPresent(s -> {
-                    throw new ApiException("Email already registered.");
+                    throw new BusinessRuleException(
+                            "E-mail já cadastrado",
+                            List.of(new FieldError("email", "E-mail já cadastrado: " + email))
+                    );
                 });
     }
 }

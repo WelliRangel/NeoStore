@@ -1,14 +1,19 @@
 package com.neostore.suppliers.model;
 
 import jakarta.persistence.*;
+import java.time.Instant;
 import java.util.Objects;
 
 @Entity
-@Table(name = "suppliers", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "cnpj"),
-        @UniqueConstraint(columnNames = "email")
-})
+@Table(
+        name = "suppliers",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "cnpj"),
+                @UniqueConstraint(columnNames = "email")
+        }
+)
 public class Supplier {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,16 +21,18 @@ public class Supplier {
     @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String email;
 
     @Column(nullable = false, length = 255)
     private String description;
 
-    @Column(nullable = false, length = 18)
+    @Column(nullable = false, length = 18, unique = true)
     private String cnpj;
 
-    public Supplier() {}
+    public Supplier() {
+        // JPA
+    }
 
     public Supplier(Long id, String name, String email, String description, String cnpj) {
         this.id = id;

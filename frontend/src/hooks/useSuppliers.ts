@@ -10,6 +10,7 @@ interface UseSuppliers {
   currentPage: number
   loading: boolean
   error: string | null
+  fieldErrors: { field: string; message: string }[] | null
   loadSuppliers: (page?: number) => Promise<void>
   createSupplier: (supplier: Omit<Supplier, "id">) => Promise<void>
   updateSupplier: (id: number, supplier: Omit<Supplier, "id">) => Promise<void>
@@ -29,34 +30,39 @@ export function useSuppliers({ pageSize = 5, onSuccess, onError }: UseSupplierOp
   const [currentPage, setCurrentPage] = useState(1)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<{ field: string; message: string }[] | null>(null)
 
-  // Use refs to store stable references to callbacks
   const onSuccessRef = useRef(onSuccess)
   const onErrorRef = useRef(onError)
 
-  // Update refs when callbacks change
-  useEffect(() => {
-    onSuccessRef.current = onSuccess
-  }, [onSuccess])
+  useEffect(() => { onSuccessRef.current = onSuccess }, [onSuccess])
+  useEffect(() => { onErrorRef.current = onError }, [onError])
 
-  useEffect(() => {
-    onErrorRef.current = onError
-  }, [onError])
+  const extractError = (err: any): { message: string, fieldErrors?: { field: string; message: string }[] } => {
+    if (err?.fieldErrors && Array.isArray(err.fieldErrors) && err.fieldErrors.length > 0) {
+      return {
+        message: err.fieldErrors.map((e: any) => e.message).join("; "),
+        fieldErrors: err.fieldErrors,
+      }
+    }
+    return { message: err?.error || err?.message || "Erro desconhecido" }
+  }
 
   const loadSuppliers = useCallback(
     async (page = 1) => {
       setLoading(true)
       setError(null)
-
+      setFieldErrors(null)
       try {
         const response = await supplierService.getSuppliers(page, pageSize)
         setSuppliers(response.data)
         setTotal(response.total)
         setCurrentPage(page)
       } catch (err) {
-        const errorMessage = "Erro ao carregar fornecedores"
-        setError(errorMessage)
-        onErrorRef.current?.(errorMessage)
+        const { message, fieldErrors } = extractError(err)
+        setError(message)
+        setFieldErrors(fieldErrors ?? null)
+        onErrorRef.current?.(message)
       } finally {
         setLoading(false)
       }
@@ -66,13 +72,15 @@ export function useSuppliers({ pageSize = 5, onSuccess, onError }: UseSupplierOp
 
   const createSupplier = useCallback(
     async (supplierData: Omit<Supplier, "id">) => {
+      setFieldErrors(null)
       try {
         await supplierService.createSupplier(supplierData)
         onSuccessRef.current?.("Fornecedor criado com sucesso!")
         await loadSuppliers(currentPage)
-      } catch (err: unknown) {
-        const errorMessage = err instanceof Error ? err.message : "Erro ao criar fornecedor"
-        onErrorRef.current?.(errorMessage)
+      } catch (err: any) {
+        const { message, fieldErrors } = extractError(err)
+        setFieldErrors(fieldErrors ?? null)
+        onErrorRef.current?.(message)
         throw err
       }
     },
@@ -81,13 +89,15 @@ export function useSuppliers({ pageSize = 5, onSuccess, onError }: UseSupplierOp
 
   const updateSupplier = useCallback(
     async (id: number, supplierData: Omit<Supplier, "id">) => {
+      setFieldErrors(null)
       try {
         await supplierService.updateSupplier(id, supplierData)
         onSuccessRef.current?.("Fornecedor atualizado com sucesso!")
         await loadSuppliers(currentPage)
-      } catch (err: unknown) {
-        const errorMessage = err instanceof Error ? err.message : "Erro ao atualizar fornecedor"
-        onErrorRef.current?.(errorMessage)
+      } catch (err: any) {
+        const { message, fieldErrors } = extractError(err)
+        setFieldErrors(fieldErrors ?? null)
+        onErrorRef.current?.(message)
         throw err
       }
     },
@@ -99,14 +109,15 @@ export function useSuppliers({ pageSize = 5, onSuccess, onError }: UseSupplierOp
       if (!window.confirm("Tem certeza que deseja excluir este fornecedor?")) {
         return
       }
-
+      setFieldErrors(null)
       try {
         await supplierService.deleteSupplier(id)
         onSuccessRef.current?.("Fornecedor excluído com sucesso!")
         await loadSuppliers(currentPage)
-      } catch (err: unknown) {
-        const errorMessage = err instanceof Error ? err.message : "Erro ao excluir fornecedor"
-        onErrorRef.current?.(errorMessage)
+      } catch (err: any) {
+        const { message, fieldErrors } = extractError(err)
+        setFieldErrors(fieldErrors ?? null)
+        onErrorRef.current?.(message)
         throw err
       }
     },
@@ -115,6 +126,7 @@ export function useSuppliers({ pageSize = 5, onSuccess, onError }: UseSupplierOp
 
   const importSuppliers = useCallback(
     async (file: File): Promise<ImportResponse> => {
+      setFieldErrors(null)
       try {
         const text = await file.text()
         const suppliersData = JSON.parse(text) as Omit<Supplier, "id">[]
@@ -130,19 +142,19 @@ export function useSuppliers({ pageSize = 5, onSuccess, onError }: UseSupplierOp
 
         await loadSuppliers(currentPage)
         return response
-      } catch (err: unknown) {
-        const errorMessage = err instanceof Error ? err.message : "Erro ao importar fornecedores"
-        onErrorRef.current?.(errorMessage)
+      } catch (err: any) {
+        const { message, fieldErrors } = extractError(err)
+        setFieldErrors(fieldErrors ?? null)
+        onErrorRef.current?.(message)
         throw err
       }
     },
     [currentPage, loadSuppliers],
   )
 
-  // Load suppliers only once on mount
   useEffect(() => {
     loadSuppliers(1)
-  }, []) // Empty dependency array - only run on mount
+  }, [])
 
   return {
     suppliers,
@@ -150,6 +162,7 @@ export function useSuppliers({ pageSize = 5, onSuccess, onError }: UseSupplierOp
     currentPage,
     loading,
     error,
+    fieldErrors,
     loadSuppliers,
     createSupplier,
     updateSupplier,

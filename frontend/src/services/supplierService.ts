@@ -1,21 +1,28 @@
 import type { Supplier, ApiResponse, ImportResponse } from "@/types/supplier"
 import { API_CONFIG } from "@/utils/constants"
 
+type ApiError = {
+  status: number
+  error: string
+  path: string
+  timestamp: string
+  fieldErrors?: { field: string; message: string }[]
+}
+
 class SupplierService {
   private async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
-      let errorMessage = `HTTP error! status: ${response.status}`
-
+      let errorData: ApiError | undefined
       try {
-        const errorData = await response.json()
-        errorMessage = errorData.error || errorData.message || errorMessage
+        errorData = await response.json()
       } catch {
-        // If JSON parsing fails, use the default error message
+        // fallback
       }
-
-      throw new Error(errorMessage)
+      if (errorData) {
+        throw errorData
+      }
+      throw { error: `HTTP error! status: ${response.status}` }
     }
-
     return response.json() as Promise<T>
   }
 
@@ -37,7 +44,7 @@ class SupplierService {
     } catch (error) {
       clearTimeout(timeoutId)
       if (error instanceof Error && error.name === "AbortError") {
-        throw new Error("Request timeout")
+        throw { error: "Request timeout" }
       }
       throw error
     }
@@ -72,16 +79,13 @@ class SupplierService {
     const response = await this.fetchWithTimeout(`${API_CONFIG.BASE_URL}/suppliers/${id}`, {
       method: "DELETE",
     })
-
     if (!response.ok) {
-      let errorMessage = `HTTP error! status: ${response.status}`
+      let errorData: ApiError | undefined
       try {
-        const errorData = await response.json()
-        errorMessage = errorData.error || errorData.message || errorMessage
-      } catch {
-        // If JSON parsing fails, use the default error message
-      }
-      throw new Error(errorMessage)
+        errorData = await response.json()
+      } catch {}
+      if (errorData) throw errorData
+      throw { error: `HTTP error! status: ${response.status}` }
     }
   }
 

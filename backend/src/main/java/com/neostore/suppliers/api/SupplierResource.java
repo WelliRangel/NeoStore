@@ -29,38 +29,26 @@ public class SupplierResource {
     @GET
     @Path("/{id}")
     public Response getById(@PathParam("id") Long id) {
-        if (id == null) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                .entity(new ErrorMessage("Invalid ID")).build();
-        }
         return Response.ok(service.findById(id)).build();
     }
 
     @PUT
     @Path("/{id}")
     public Response update(@PathParam("id") Long id, @Valid SupplierDTO dto) {
-        if (id == null) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                .entity(new ErrorMessage("Invalid ID")).build();
-        }
         return Response.ok(service.update(id, dto)).build();
     }
 
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") Long id) {
-        if (id == null) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                .entity(new ErrorMessage("Invalid ID")).build();
-        }
         service.delete(id);
         return Response.noContent().build();
     }
 
     @GET
     public Response list(
-        @QueryParam("page") @DefaultValue("1") int page,
-        @QueryParam("pageSize") @DefaultValue("5") int pageSize
+            @QueryParam("page") @DefaultValue("1") int page,
+            @QueryParam("pageSize") @DefaultValue("5") int pageSize
     ) {
         List<SupplierDTO> suppliers = service.findAll(page, pageSize);
         long total = service.count();
@@ -71,12 +59,5 @@ public class SupplierResource {
     @Path("{path:.*}")
     public Response options() {
         return Response.ok().build();
-    }
-
-    public static class ErrorMessage {
-        public String error;
-        public ErrorMessage(String error) {
-            this.error = error;
-        }
     }
 }

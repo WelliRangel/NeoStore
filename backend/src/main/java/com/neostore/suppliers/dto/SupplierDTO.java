@@ -4,24 +4,26 @@ import com.neostore.suppliers.validation.Cnpj;
 import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({ "id", "cnpj", "description", "email", "name" })
+
+@JsonPropertyOrder({ "id", "name", "email", "description", "cnpj" })
 public record SupplierDTO(
+
         Long id,
 
-        @NotBlank
-        @Size(max = 100)
+        @NotBlank(message = "O nome não pode ser vazio")
+        @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres")
         String name,
 
-        @NotBlank
-        @Email
-        @Size(max = 100)
+        @NotBlank(message = "O e-mail não pode ser vazio")
+        @Email(message = "E-mail inválido")
+        @Size(max = 100, message = "O e-mail deve ter no máximo 100 caracteres")
         String email,
 
-        @NotBlank
-        @Size(max = 255)
+        @NotBlank(message = "A descrição não pode ser vazia")
+        @Size(max = 255, message = "A descrição deve ter no máximo 255 caracteres")
         String description,
 
-        @NotBlank
-        @Cnpj
+        @NotBlank(message = "O CNPJ não pode ser vazio")
+        @Cnpj(message = "CNPJ inválido")
         String cnpj
-) { }
+) {}
