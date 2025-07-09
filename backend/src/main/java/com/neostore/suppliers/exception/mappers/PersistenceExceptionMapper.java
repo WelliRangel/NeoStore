@@ -1,7 +1,6 @@
 package com.neostore.suppliers.exception.mappers;
 
 import com.neostore.suppliers.api.payload.ApiErrorResponse;
-import com.neostore.suppliers.api.payload.FieldError;
 import com.neostore.suppliers.exception.BusinessRuleException;
 import jakarta.persistence.PersistenceException;
 import jakarta.ws.rs.core.Context;
