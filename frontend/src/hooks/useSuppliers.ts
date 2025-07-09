@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect, useCallback, useRef } from "react"
 import type { Supplier, ImportResponse } from "@/types/supplier"
 import { supplierService } from "@/services/supplierService"

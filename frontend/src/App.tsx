@@ -1,5 +1,3 @@
-"use client"
-
 import { useMemo } from "react"
 import { ErrorBoundary } from "@/components/molecules/ErrorBoundary"
 import { Suspense } from "@/components/atoms/Suspense"

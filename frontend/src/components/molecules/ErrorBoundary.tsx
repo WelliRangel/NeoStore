@@ -1,5 +1,3 @@
-"use client"
-
 import { Component, type ReactNode, type ErrorInfo } from "react"
 import { Card } from "@/components/atoms/Card"
 import { Button } from "@/components/atoms/Button"

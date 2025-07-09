@@ -1,5 +1,3 @@
-"use client"
-
 import type { FormEvent, ChangeEvent } from "react"
 import { useState, useEffect, useCallback, useId } from "react"
 import type { Supplier } from "@/types/supplier"

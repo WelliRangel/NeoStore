@@ -1,5 +1,3 @@
-"use client"
-
 import { memo } from "react"
 import type { Supplier } from "@/types/supplier"
 import { Card } from "@/components/atoms/Card"

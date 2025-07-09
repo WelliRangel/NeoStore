@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/components/atoms/Button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 

@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useCallback } from "react"
 import { Layout } from "@/components/templates/Layout"
 import { SupplierList } from "@/components/organisms/SupplierList"

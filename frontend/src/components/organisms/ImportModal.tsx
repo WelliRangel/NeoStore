@@ -1,5 +1,3 @@
-"use client"
-
 import type { ChangeEvent } from "react"
 import { useState, useCallback } from "react"
 import { Modal } from "@/components/molecules/Modal"
