@@ -1,6 +1,7 @@
 package com.neostore.suppliers.dto;
 
 import com.neostore.suppliers.validation.Cnpj;
+import com.neostore.suppliers.validation.Email;
 import jakarta.validation.constraints.*;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 

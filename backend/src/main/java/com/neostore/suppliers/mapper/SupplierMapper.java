@@ -38,7 +38,6 @@ public final class SupplierMapper {
             return null;
         }
         Supplier entity = new Supplier();
-        entity.setId(dto.id());
         entity.setName(dto.name());
         entity.setEmail(dto.email());
         entity.setDescription(dto.description());

@@ -54,10 +54,4 @@ public class SupplierResource {
         long total = service.count();
         return Response.ok(new PagedResponse<>(suppliers, total)).build();
     }
-
-    @OPTIONS
-    @Path("{path:.*}")
-    public Response options() {
-        return Response.ok().build();
-    }
 }

@@ -1,7 +1,6 @@
 package com.neostore.suppliers.model;
 
 import jakarta.persistence.*;
-import java.time.Instant;
 import java.util.Objects;
 
 @Entity
@@ -34,8 +33,7 @@ public class Supplier {
         // JPA
     }
 
-    public Supplier(Long id, String name, String email, String description, String cnpj) {
-        this.id = id;
+    public Supplier(String name, String email, String description, String cnpj) {
         this.name = name;
         this.email = email;
         this.description = description;
@@ -43,7 +41,6 @@ public class Supplier {
     }
 
     public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
