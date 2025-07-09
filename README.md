@@ -46,6 +46,7 @@ A orquestração do ambiente de desenvolvimento e produção é feita através d
 ## Pré-requisitos
 
 - **Git** (v2.0 ou superior)
+- **Maven** (V3.9 ou superior)
 - **Docker Engine** (v20.10 ou superior)
 - **Docker Compose** (v1.29 ou superior)
 
@@ -109,14 +110,20 @@ O arquivo `docker-compose.yml` está localizado na raiz e define os seguintes se
 Após clonar o repositório e garantir que as variáveis de ambiente estão corretas (se necessário):
 
 ```bash
-# No diretório raiz do projeto
+#1. Na pasta /NeoStore/backend...
+mvn clean package
+```
+
+```bash
+# 2. No diretório raiz do projeto /NeoStore/
 docker compose up -d --build
 ```
 
 - O **backend** ficará disponível em: [http://localhost:8080/neostore/api/v1/suppliers](http://localhost:8080/neostore/api/v1/suppliers)
 - O **frontend** ficará disponível em: [http://localhost:3000](http://localhost:3000)
 
-> **Obs:** O Docker Compose irá construir e subir todos os serviços automaticamente. Não é necessário rodar comandos individuais em cada pasta.
+> **Obs:** O Docker Compose irá construir e subir todos os serviços automaticamente.
+> Somente é necessário executar o comando "mvn clean package" na pasta do backend para gerar o .war que será copiado pra imagem base do wildfly.
 
 ---
 
