@@ -10,10 +10,10 @@
 
 Este repositório contém um monorepo fullstack dividido em dois projetos:
 
-- **Backend**: API RESTful desenvolvida em Java 21 com Jakarta EE 10, JPA (Hibernate), CDI e WildFly.
+- **Backend**: API RESTful desenvolvida em Java 21 com Jakarta EE 10, JPA (Hibernate), CDI e WildFly(H2 Database configurado dentro da imagem wildfly presente no dockerfile).
 - **Frontend**: Aplicação web moderna em React 19, Vite, TypeScript e Tailwind CSS.
 
-A orquestração do ambiente de desenvolvimento e produção é feita através de containers Docker, com Docker Compose gerenciando os serviços de API, banco de dados (caso exista) e frontend.
+A orquestração do ambiente de desenvolvimento e produção é feita através de containers Docker, com Docker Compose gerenciando os serviços de backend (API + Banco de dados no Wildfly) e frontend.
 
 ---
 
