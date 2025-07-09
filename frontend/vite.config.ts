@@ -73,7 +73,7 @@ export default defineConfig({
     logOverride: { "this-is-undefined-in-esm": "silent" },
   },
   preview: {
-    port: 4173,
+    port: 3000,
     open: true,
     cors: true,
   },
