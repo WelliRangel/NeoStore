@@ -60,8 +60,6 @@ A orquestração do ambiente de desenvolvimento e produção é feita através d
    cd NeoStore
    ```
 
-. (Opcional) Configure variáveis de ambiente do backend e frontend conforme instruções nos READMEs de cada pasta, se necessário.
-
 ---
 
 ## Configuração de Ambiente
@@ -69,9 +67,8 @@ A orquestração do ambiente de desenvolvimento e produção é feita através d
 
 O arquivo `docker-compose.yml` está localizado na raiz e define os seguintes serviços:
 
-- **backend**: Container Jakarta EE (WildFly)
+- **backend**: Container Jakarta EE (WildFly )
 - **frontend**: Container React (Vite)
-- **db**: Container de banco de dados (caso aplicável)
 
 ---
 
@@ -123,7 +120,7 @@ docker compose up -d --build
 - O **frontend** ficará disponível em: [http://localhost:3000](http://localhost:3000)
 
 > **Obs:** O Docker Compose irá construir e subir todos os serviços automaticamente.
-> Somente é necessário executar o comando "mvn clean package" na pasta do backend para gerar o .war que será copiado pra imagem base do wildfly.
+> Somente é necessário executar o comando "mvn clean package" na pasta do backend para gerar o .war que será copiado para a imagem base do wildfly.
 
 ---
 
